@@ -1,3 +1,6 @@
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
+
 fun main() {
     val myPhone = MobilePhone("Samsung", 5)
 
@@ -24,16 +27,28 @@ class MobilePhone(merk: String, initieleHelderheid: Int) : Device(merk, initiele
     }
 }
 
+class RangeRegulator(initialValue: Int, private val minRange: Int, private val maxRange: Int) :
+    ReadWriteProperty<Any?, Int> {
+    private var _value: Int = initialValue
+
+    override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+        return _value
+    }
+
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int) {
+        if (value in minRange..maxRange) {
+            _value = value
+        }
+    }
+}
+
 open class Device(val merk: String, initieleHelderheid: Int = 5) {
 
     constructor() : this("Unknown")
 
-    var helderheid = initieleHelderheid
-        set(value) {
-            if (value in 0..10) {
-                field = value
-            }
-        }
+    var helderheid by RangeRegulator(5, 1, 10)
+
+    var batterijPercentage by RangeRegulator(100, 0, 100)
 
     init {
         println("Device created")
