@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BinaryConverter</string>
+    <string name="convert">Convert</string>
+    <string name="binair_getal_is">Binair getal is : %1$s</string>
+</resources>

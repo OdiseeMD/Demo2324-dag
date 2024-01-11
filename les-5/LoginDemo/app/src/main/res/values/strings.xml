@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LoginDemo</string>
+    <string name="login">Log in</string>
+    <string name="register">Registreer</string>
+    <string name="username">Gebruikersnaam</string>
+    <string name="password">wachtwoord</string>
+    <string name="password_check">wachtwoord controle</string>
+    <string name="email">email</string>
+    <string name="login_failed">Email en/of wachtwoord is foutief</string>
+    <string name="navigate_back">keer terug</string>
+    <string name="send_mail">Verstuur mail</string>
+</resources>
