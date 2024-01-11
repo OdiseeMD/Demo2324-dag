@@ -23,7 +23,7 @@ import be.odisee.logindemo.R
 import be.odisee.logindemo.ui.theme.LoginDemoTheme
 
 @Composable
-fun RegisterView(modifier: Modifier = Modifier) {
+fun RegisterView(modifier: Modifier = Modifier, onRegisterClicked: () -> Unit) {
 
     val viewModel = viewModel<RegisterViewModel>()
     val state by viewModel.uiState.collectAsState()
@@ -85,6 +85,7 @@ fun RegisterView(modifier: Modifier = Modifier) {
         Button(
             onClick = {
                 viewModel.register()
+                onRegisterClicked()
             },
             enabled = state.registerButtonEnabled,
             modifier = Modifier
@@ -100,6 +101,6 @@ fun RegisterView(modifier: Modifier = Modifier) {
 @Composable
 fun RegisterViewPreview() {
     LoginDemoTheme {
-        RegisterView()
+        RegisterView(onRegisterClicked = {})
     }
 }

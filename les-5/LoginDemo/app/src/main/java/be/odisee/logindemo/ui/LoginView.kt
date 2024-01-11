@@ -21,11 +21,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import be.odisee.logindemo.R
+import be.odisee.logindemo.model.User
 import be.odisee.logindemo.ui.theme.LoginDemoTheme
 
 @Composable
 fun LoginView(
     modifier: Modifier = Modifier,
+    onRegisterClicked: () -> Unit,
+    onLoginClicked: (User) -> Unit
 ) {
 
     val viewModel = viewModel<LoginViewModel>()
@@ -67,7 +70,9 @@ fun LoginView(
         Button(
             onClick = {
                 val result = viewModel.login()
-
+                if (result != null) {
+                    onLoginClicked(result)
+                }
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -77,8 +82,7 @@ fun LoginView(
         }
 
         Button(
-            onClick = {
-            },
+            onClick = onRegisterClicked,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp)
@@ -93,7 +97,6 @@ fun LoginView(
 @Preview
 fun LoginViewPreview() {
     LoginDemoTheme {
-        LoginView(
-        )
+        LoginView(onRegisterClicked = {}, onLoginClicked = {})
     }
 }
