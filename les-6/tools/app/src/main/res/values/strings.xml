@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">tools</string>
+    <string name="open_menu">open menu</string>
+    <string name="shared_preferences">shared preferences</string>
+    <string name="go_back">Ga terug</string>
+    <string name="snackbar">Snackbar</string>
+    <string name="menu">Menu</string>
+    <string name="dialog">dialog</string>
+    <string name="open_alert">open alert dialog</string>
+    <string name="open_time_dialog">open time dialog</string>
+    <string name="open_date_dialog">open date dialog</string>
+</resources>
