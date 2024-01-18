@@ -3,6 +3,7 @@ package be.odisee.tools.ui.sharedprefs
 import android.app.Application
 import android.content.Context
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.AndroidViewModel
@@ -20,8 +21,8 @@ val Context.dataStore by preferencesDataStore(name = "settings")
 class SharedPrefsViewModel(application: Application) : AndroidViewModel(application) {
     private val _state = MutableStateFlow(SharedPrefsUiState())
     val state = _state.asStateFlow()
-
     private val preferenceKey = stringPreferencesKey("name")
+    private val agePreferenceKey = intPreferencesKey("age")
 
     init {
         // execute once
@@ -55,12 +56,12 @@ class SharedPrefsViewModel(application: Application) : AndroidViewModel(applicat
         viewModelScope.launch {
             getApplication<Application>().dataStore.edit { preferences ->
                 preferences[preferenceKey] = name
-
+                preferences[agePreferenceKey] = 12
                 // { "name": "matthias"}
             }
 
-            getApplication<Application>().dataStore.edit {
-                it.remove(preferenceKey)
+            getApplication<Application>().dataStore.edit { preferences ->
+                preferences.remove(agePreferenceKey)
             }
         }
     }

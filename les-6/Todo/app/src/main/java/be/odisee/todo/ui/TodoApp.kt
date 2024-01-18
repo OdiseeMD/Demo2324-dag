@@ -64,7 +64,7 @@ fun TodoApp(modifier: Modifier = Modifier) {
             composable(Screens.AddItem.name) {
                 AddScreen(navigateBack = {
                     navController.popBackStack()
-                    overviewViewModel.reload()
+//                    overviewViewModel.reload()
                 })
             }
         }

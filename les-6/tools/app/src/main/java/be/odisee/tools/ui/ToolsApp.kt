@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Dialpad
 import androidx.compose.material.icons.filled.Domain
@@ -304,7 +305,7 @@ fun ToolsActions() {
         mutableStateOf(1)
     }
 
-    IconButton(onClick = { menuExpanded = !menuExpanded }) {
+    IconButton(onClick = { }) {
         Icon(imageVector = Icons.Default.Share, contentDescription = null)
     }
 
@@ -318,12 +319,16 @@ fun ToolsActions() {
         expanded = menuExpanded,
         onDismissRequest = { menuExpanded = false },
     ) {
-        repeat(counter) {
-            DropdownMenuItem(text = { Text("$counter") }, onClick = {
-                menuExpanded = false
-                counter++
-            })
-        }
+
+        DropdownMenuItem(text = { Text("action 1") }, onClick = {
+            menuExpanded = false
+        }, leadingIcon = {
+            Icon(imageVector = Icons.Default.AccountBox, contentDescription = null)
+        })
+        DropdownMenuItem(text = { Text("action 2") }, onClick = {
+            menuExpanded = false
+        })
+
 
     }
 }

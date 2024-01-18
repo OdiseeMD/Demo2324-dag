@@ -65,7 +65,6 @@ fun MyTimeDialog(openDialog: Boolean, onDismissRequest: () -> Unit) {
 
     val timePickerState = rememberTimePickerState(is24Hour = true)
     if (openDialog) {
-
         AlertDialog(
             onDismissRequest = onDismissRequest
         ) {
